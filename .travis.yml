@@ -2,6 +2,9 @@ language: java
 install: true
 addons:
   sonarcloud:
+    branches:
+      - master
+      - testbuild
     organization: mmirelli-github
     token:
       secure: "$TOKEN"
