@@ -1,0 +1,16 @@
+language: java
+install: true
+addons:
+  sonarcloud:
+    organization: mmirelli-github
+    token:
+      secure: "$TOKEN"
+script:
+- bash -e ./travis_build.sh
+cache:
+  directories:
+  - "$HOME/.m2"
+  - "$HOME/.sonar/cache"
+env:
+  global:
+  - secure: EOdKUIdDtNVGBn4MEQFw+nvoKf1oyfgcHPz5x1Sv9rUFiQ82eRSc9MLn5tq1ZsOg46/LY2UrMo8TgqNGwBXZsWQKkyp6gfK+fEA+uYOrGrQfBgZIB0di19neyHa/NDLXxej5/8Gv4rCcnl0qN1S8Edd/Yu9pvh9F9H/vU+6VQ1k4Sk7fmqXMd9zCf1eaQcDh3AL4LpLJLsvYHqRaFw1SvtwxWeXFhy0Kc4nYoLdmIjswu1+UG3vyBi66n8fuujWeQKgWSQyHyp9MOPMz7HmMWCX0SnDy3kdUCtrtLILviyR+hTfE0eENZId1IQ6ej7y8cYBd8Z83JS2qN3NsU0/QCmOf/WnqMH492/ghc1MeuSQgzBxL2fKDUr3kdRVA4L3puLOCJRPts+r/ZbCHdhbz3dLvic/7J88x1XconJeYoqmXdTQPZMEFGDneH3Cd2b3aYJbsoeitB3HtXWswpKJhCGAlYesxF7IQbMyWCpDX69Uwqvn0Vd/BEnHHIc5VEgtlFb3B/3pS0TmT0sTNnBPkUWV5ERnejY5CmPNqxXyssFzrYVlPqM+kfyfngfEjzRxbXzQThoavg1fqRcIXJOBgm0ePY9UzTkCqgYyB7VnALFTHXc8FSbwZ04s+nTpyCfzpFI9ioYHs9tsJG+3C3BpNy1bi4OZe/GlrvvgpxzSrg6o=
