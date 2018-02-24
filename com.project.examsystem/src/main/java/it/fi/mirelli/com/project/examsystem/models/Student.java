@@ -1,13 +1,29 @@
 package it.fi.mirelli.com.project.examsystem.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name = "STUDENT") // track entity name inside java application
+// @Table(name = "STUDENT") // track db table name, its default value is
+// Entity.name
 public class Student {
 
+	public Student() {
+		super();
+	}
+
+	@Id
 	private int id;
+
+	@Column
 	private String email;
 
-	public Student(int id, String email) {
-		super();
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -19,5 +35,9 @@ public class Student {
 		return email;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", email=" + email + "]";
+	}
 
 }

@@ -12,13 +12,17 @@
 
 	<properties>
 		<!-- versions -->
-		<jacoco-version>0.7.7.201606060606</jacoco-version>
-		<surefire-version>2.19.1</surefire-version>
-		<compiler-plugin-version>3.7.0</compiler-plugin-version>
-		<java-version>1.8</java-version>
-		<coveralls-version>4.3.0</coveralls-version>
-		<junit-version>4.12</junit-version>
-		<mockito-version>1.10.19</mockito-version>
+		<jacoco-v>0.7.7.201606060606</jacoco-v>
+		<surefire-v>2.19.1</surefire-v>
+		<compiler-plugin-v>3.7.0</compiler-plugin-v>
+		<java-v>1.8</java-v>
+		<coveralls-v>4.3.0</coveralls-v>
+		<junit-v>4.12</junit-v>
+		<mockito-v>1.10.19</mockito-v>
+		<h2-database-v>1.4.196</h2-database-v>
+		<log4j-v>2.10.0</log4j-v>
+		<hibernate-v>5.2.13.Final</hibernate-v>
+		<mysql-v>6.0.6</mysql-v>
 
 		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
 		<jacoco.report.path>${project.reporting.outputDirectory}/jacoco-ut</jacoco.report.path>
@@ -30,7 +34,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco-version}</version>
+				<version>${jacoco-v}</version>
 				<executions>
 					<!-- Prepares the property pointing to the JaCoCo runtime agent which 
 						is passed as VM argument when Maven the Surefire plugin is executed. -->
@@ -64,14 +68,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${surefire-version}</version>
+				<version>${surefire-v}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${compiler-plugin-version}</version>
+				<version>${compiler-plugin-v}</version>
 				<configuration>
-					<source>${java-version}</source>
-					<target>${java-version}</target>
+					<source>${java-v}</source>
+					<target>${java-v}</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -80,7 +84,7 @@
 				<plugin>
 					<groupId>org.eluder.coveralls</groupId>
 					<artifactId>coveralls-maven-plugin</artifactId>
-					<version>${coveralls-version}</version>
+					<version>${coveralls-v}</version>
 					<configuration>
 						<jacocoReports>
 							<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
@@ -95,14 +99,47 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
+			<version>${junit-v}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
-			<version>${mockito-version}</version>
+			<version>${mockito-v}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/ch.vorburger.mariaDB4j/mariaDB4j -->
+		<!-- <dependency> <groupId>ch.vorburger.mariaDB4j</groupId> <artifactId>mariaDB4j</artifactId> 
+			<version>2.2.3</version> <scope>test</scope> </dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-v}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-v}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j-v}</version>
+		</dependency>
+
+		<!-- In-memory db for unit-testing -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2-database-v}</version>
 			<scope>test</scope>
 		</dependency>
 

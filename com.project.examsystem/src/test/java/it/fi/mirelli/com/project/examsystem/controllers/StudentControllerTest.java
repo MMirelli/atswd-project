@@ -17,7 +17,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import it.fi.mirelli.com.project.examsystem.controllers.StudentController;
 import it.fi.mirelli.com.project.examsystem.dbs.StudentDatabase;
 import it.fi.mirelli.com.project.examsystem.models.Student;
 
@@ -95,7 +94,10 @@ public class StudentControllerTest {
 	}
 
 	private Student createNewStudent(int id, String email) {
-		return new Student(id, email);
+		Student student = new Student();
+		student.setId(id);
+		student.setEmail(email);
+		return student;
 	}
 
 	@Test
