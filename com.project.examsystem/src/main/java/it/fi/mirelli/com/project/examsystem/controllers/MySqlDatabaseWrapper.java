@@ -11,7 +11,8 @@ import it.fi.mirelli.com.project.examsystem.models.Student;
 public class MySqlDatabaseWrapper implements Database<Student, Integer> {
 
 	private EntityManager em;
-
+	private String select = "SELECT s FROM STUDENT s";
+	
 	public MySqlDatabaseWrapper(EntityManager em) {
 		super();
 		this.em = em;
@@ -19,18 +20,18 @@ public class MySqlDatabaseWrapper implements Database<Student, Integer> {
 
 	@Override
 	public List<Student> getAll() {
-
 		return this.em.createQuery(
-				"SELECT s FROM STUDENT s", 
+				select, 
 				Student.class).
 				getResultList();
 	}
 
 	@Override
 	public Student findById(Integer id) {
+//		String query = DSL.using(SQLDialect.MYSQL)
+		String whereIdIsEqual = " WHERE s.id = '"+id+"'";
 		return this.em.createQuery(
-				"SELECT s FROM STUDENT s"
-				+ " WHERE s.id = '"+id+"'", 
+				select + whereIdIsEqual, 
 				Student.class).
 				getSingleResult();
 	}
