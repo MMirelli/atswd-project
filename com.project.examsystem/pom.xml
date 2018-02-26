@@ -104,7 +104,7 @@
 
 	<profiles>
 		<profile>
-			<id>travis-ci-integration</id>
+			<id>travis-ci-complete-integration</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
