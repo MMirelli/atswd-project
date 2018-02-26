@@ -16,7 +16,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:5432/" />
 			<property name="javax.persistence.jdbc.user" value="" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect" />
 
 			<!-- Log SQL queries -->

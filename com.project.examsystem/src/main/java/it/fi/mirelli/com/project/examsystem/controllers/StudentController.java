@@ -25,8 +25,8 @@ public class StudentController {
 		studentDatabase.add(newStudent);		
 	}
 
-	public String getStudentEmail(int id) {
-		return studentDatabase.getEmail(id);
+	public String getStudentEmailById(int id) {
+		return studentDatabase.getEmailById(id);
 	}
 
 }

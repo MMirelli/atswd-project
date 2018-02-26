@@ -17,6 +17,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import it.fi.mirelli.com.project.examsystem.common.StudentTestHelper;
 import it.fi.mirelli.com.project.examsystem.dbs.StudentDatabase;
 import it.fi.mirelli.com.project.examsystem.models.Student;
 
@@ -28,76 +29,90 @@ public class StudentControllerTest {
 	
 	private List<Student> students;
 	private StudentController studentController;
+	StudentTestHelper helper;
 
 	@Before
 	public void setUp() throws Exception {
 		studentController = new StudentController(db);
 		students = new ArrayList<Student>();
+		helper = new StudentTestHelper();
+
 		when(db.getAll()).thenReturn(students);
 	}
 
 	@Test
-	public void getAllStudentWhenNoOne() {
-		List<Student> allStudents = studentController.getAllStudents();
+	public void getAllStudentsWhenNoOne() {
+		List<Student> allStudents = 
+				studentController.getAllStudents();
 
 		verify(db, times(1)).getAll();
-		assertStudentNumber(allStudents, 0);
+		helper.assertStudentNumber(0, allStudents);
 	}
 
-	private void assertStudentNumber(List<Student> allStudents, int expected) {
-		assertEquals(allStudents.size(), expected);
-	}
-	
 	@Test
 	public void getAllWhenOne() {
-		students.add(createNewStudent(1, "stud1@mail.com"));
-		List<Student> allStudents = studentController.getAllStudents();
+		studentsAddNew(1, "stud1@mail.com");
+		
+		List<Student> allStudents = 
+				studentController.getAllStudents();
 		
 		verify(db, times(1)).getAll();
-		assertStudentNumber(allStudents, 1);
+		helper.assertStudentNumber(1, allStudents);
+	}
+
+	private void studentsAddNew(int id, String email) {
+		students.add(helper.
+				createNewStudent(id, email));
 	}
 
 	@Test
 	public void getAllWhenMany() {
-		students.add(createNewStudent(1, "stud1@mail.com"));
-		students.add(createNewStudent(2, "stud2@mail.com"));
-		List<Student> allStudents = studentController.getAllStudents();
+		studentsAddNew(1, "stud1@mail.com");
+		studentsAddNew(2, "stud2@mail.com");
+		
+		List<Student> allStudents = 
+				studentController.getAllStudents();
 		
 		verify(db, times(1)).getAll();
-		assertStudentNumber(allStudents, 2);
+		helper.assertStudentNumber(2, allStudents);
 	}
 	
-	@Test 
-	public void findByIdUnsuccessful() {
-		int id = 1;
-		students.add(createNewStudent(id, "stud1@mail.com"));
-		Student fetchedStudent = studentController.findStudentById(2);
-		
-		verify(db, times(id)).findById(2);
-		assertNull(fetchedStudent);
-	}
 	
 	@Test 
 	public void findByIdSuccessful() {
-		students.add(createNewStudent(1, "stud1@mail.com"));
-		when(db.findById(1)).thenReturn(createNewStudent(1, "stud1@mail.com"));
-		Student fetchedStudent = studentController.findStudentById(1);
+		int searchedStudentId = 1;
+		studentsAddNew
+			(searchedStudentId, "stud1@mail.com");
+		
+		when(db.findById(searchedStudentId)).
+			thenReturn(helper.createNewStudent
+				(searchedStudentId, "stud1@mail.com"));
+		
+		Student fetchedStudent = 
+				studentController.
+					findStudentById(searchedStudentId);
 		
 		ArgumentCaptor<Integer> idCaptor =
 				ArgumentCaptor.forClass(Integer.class);
 		
 		verify(db, times(1)).findById(idCaptor.capture());
 		
-		int expected = 1;
-		assertEquals(expected, idCaptor.getAllValues().get(0).intValue());
+		assertEquals(searchedStudentId, 
+				idCaptor.getAllValues().get(0).intValue());
 		assertNotNull(fetchedStudent);
 	}
 
-	private Student createNewStudent(int id, String email) {
-		Student student = new Student();
-		student.setId(id);
-		student.setEmail(email);
-		return student;
+	@Test 
+	public void findByIdUnsuccessful() {
+		int addedStudentId = 1;
+		studentsAddNew
+			(addedStudentId, "stud1@mail.com");
+		
+		Student fetchedStudent = 
+				studentController.findStudentById(2);
+		
+		verify(db, times(addedStudentId)).findById(2);
+		assertNull(fetchedStudent);
 	}
 
 	@Test
@@ -105,15 +120,18 @@ public class StudentControllerTest {
 		ArgumentCaptor<Student> studentCaptor =
 				ArgumentCaptor.forClass(Student.class);
 		
-		studentController.addStudent(createNewStudent(1, "stud1@mail.com"));
+		studentController.addStudent
+			(helper.createNewStudent(1, "stud1@mail.com"));
 		
 		verify(db, times(1)).add(studentCaptor.capture());
 		
 		int expectedId = 1;
-		assertEquals(expectedId, studentCaptor.getAllValues().get(0).getId());
+		assertEquals(expectedId, studentCaptor.
+							getAllValues().get(0).getId());
 
 		String expectedEmail = "stud1@mail.com";
-		assertEquals(expectedEmail, studentCaptor.getAllValues().get(0).getEmail());
+		assertEquals(expectedEmail, studentCaptor.
+							getAllValues().get(0).getEmail());
 	}
 	
 	@Test 
@@ -121,12 +139,17 @@ public class StudentControllerTest {
 		ArgumentCaptor<Integer> idCaptor =
 				ArgumentCaptor.forClass(Integer.class);
 		
-		when(db.getEmail(1)).thenReturn("stud1@mail.com");
-		String fetchedEmail = studentController.getStudentEmail(1);
-		verify(db, times(1)).getEmail(idCaptor.capture());
+		when(db.getEmailById(1)).
+				thenReturn("stud1@mail.com");
+		
+		String fetchedEmail = studentController.
+								getStudentEmailById(1);
+		
+		verify(db, times(1)).getEmailById(idCaptor.capture());
 		
 		int expectedId = 1;
-		assertEquals(expectedId, idCaptor.getAllValues().get(0).intValue());
+		assertEquals(expectedId, idCaptor.
+				getAllValues().get(0).intValue());
 		
 		String expectedEmail = "stud1@mail.com";
 		assertEquals(expectedEmail, fetchedEmail);

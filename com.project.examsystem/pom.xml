@@ -16,6 +16,7 @@
 		<surefire-v>2.19.1</surefire-v>
 		<compiler-plugin-v>3.7.0</compiler-plugin-v>
 		<java-v>1.8</java-v>
+		<failsafe-v>2.19.1</failsafe-v>
 		<coveralls-v>4.3.0</coveralls-v>
 		<junit-v>4.12</junit-v>
 		<mockito-v>1.10.19</mockito-v>
@@ -23,6 +24,10 @@
 		<log4j-v>2.10.0</log4j-v>
 		<hibernate-v>5.2.13.Final</hibernate-v>
 		<mysql-v>6.0.6</mysql-v>
+		<fabric8-v>0.24.0</fabric8-v>
+		<antrun-v>1.8</antrun-v>
+
+		<sleep.time>5000</sleep.time>
 
 		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
 		<jacoco.report.path>${project.reporting.outputDirectory}/jacoco-ut</jacoco.report.path>
@@ -77,6 +82,80 @@
 					<source>${java-v}</source>
 					<target>${java-v}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<!-- mySql db needs quite a long time to start up, this is to stop the 
+					build temporarily -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${antrun-v}</version>
+				<executions>
+					<execution>
+						<id>sleep-for-a-while</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<target>
+								<sleep seconds="15" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${failsafe-v}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>${fabric8-v}</version>
+				<configuration>
+					<images>
+						<image>
+							<name>mysql</name>
+							<run>
+								<env>
+									<MYSQL_USER>root</MYSQL_USER>
+									<MYSQL_ROOT_PASSWORD>psw</MYSQL_ROOT_PASSWORD>
+									<MYSQL_DATABASE>ExamDB</MYSQL_DATABASE>
+								</env>
+								<hostname>localhost</hostname>
+								<ports>
+									<port>3306:3306</port>
+								</ports>
+							</run>
+						</image>
+					</images>
+					<showLogs>true</showLogs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>docker:start</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>docker:stop</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<pluginManagement>

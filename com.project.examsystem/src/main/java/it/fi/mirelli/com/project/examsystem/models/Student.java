@@ -14,7 +14,7 @@ public class Student {
 	}
 
 	@Id
-	private int id;
+	private Integer id;
 
 	@Column
 	private String email;
