@@ -214,7 +214,7 @@
 										</env>
 										<hostname>localhost</hostname>
 										<ports>
-											<port>3306:3306</port>
+											<port>12345:3306</port>
 										</ports>
 									</run>
 								</image>
