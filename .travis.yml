@@ -1,3 +1,4 @@
+sudo: required
 language: java
 jdk:
   - oraclejdk8
@@ -7,8 +8,9 @@ only:
   - testbuild
 services:
   - docker
-install:
+before_install:
   - docker pull mysql
+  - docker run -p 3306:3306 --name mysql-remote -e MYSQMYSQL_USER=root -e MYSQL_ROOT_PASSWORD=psw -e MYSQL_DATABASE=ExamDB --rm mysql
 addons:
   sonarcloud:
     branches:
