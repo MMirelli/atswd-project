@@ -21,17 +21,17 @@
 		<junit-v>4.12</junit-v>
 		<mockito-v>1.10.19</mockito-v>
 		<h2-database-v>1.4.196</h2-database-v>
-		<log4j-v>2.10.0</log4j-v>
+		<log4j-v>1.2.17</log4j-v>
 		<hibernate-v>5.2.13.Final</hibernate-v>
 		<mysql-v>6.0.6</mysql-v>
 		<fabric8-v>0.24.0</fabric8-v>
 		<antrun-v>1.8</antrun-v>
 
-		<sleep.time>5000</sleep.time>
-
 		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
 		<jacoco.report.path>${project.reporting.outputDirectory}/jacoco-ut</jacoco.report.path>
+		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 
@@ -195,7 +195,7 @@
 									</run>
 								</image>
 							</images>
-							<showLogs>true</showLogs>
+							<showLogs>false</showLogs>
 						</configuration>
 						<executions>
 							<execution>
@@ -253,12 +253,13 @@
 			<version>${mysql-v}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
 			<version>${log4j-v}</version>
 		</dependency>
+
 
 		<!-- In-memory db for unit-testing -->
 		<dependency>
