@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>it.fi.mirelli</groupId>
-	<artifactId>com.project.examsystem</artifactId>
+	<artifactId>com.project.student</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
