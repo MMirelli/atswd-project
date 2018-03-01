@@ -5,7 +5,7 @@
 
 	<appender name="file" class="org.apache.log4j.RollingFileAppender">
 		<!-- name of log file: -->
-		<param name="file" value="hibernate_tutorial.log" />
+		<param name="file" value="db_raw_operations-TEST.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{HH:mm:ss}] %m%n" />
 		</layout>
@@ -14,23 +14,13 @@
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{HH:mm:ss}] %m%n" />
+			<param name="ConversionPattern" value="[DB - %d{HH:mm:ss}] %m%n" />
 		</layout>
 	</appender>
-
-	<!-- change log level to DEBUG if you want more detailed logs from Hibernate -->
-	<logger name="org.hibernate">
-		<level value="ERROR" />
-	</logger>
 
 	<!-- log SQL queries executed by Hibernate library -->
 	<logger name="org.hibernate.SQL">
 		<level value="DEBUG" />
-	</logger>
-
-	<!-- log values of SQL queries parameters -->
-	<logger name="org.hibernate.type.descriptor.sql.BasicBinder">
-		<level value="TRACE" />
 	</logger>
 
 	<root>

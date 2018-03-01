@@ -21,10 +21,11 @@
 				value="drop-and-create" />
 			<property name="javax.persistence.schema-generation.scripts.action"
 				value="drop-and-create" />
+
 			<property name="javax.persistence.schema-generation.scripts.create-target"
-				value="createStudent.sql" />
+				value="../../main/resources/META-INF/createStudent.sql" />
 			<property name="javax.persistence.schema-generation.scripts.drop-target"
-				value="dropStudent.sql" />
+				value="../../main/resources/META-INF/dropStudent.sql" />
 
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
 
@@ -41,17 +42,17 @@
 	</persistence-unit>
 	<persistence-unit name="examSystem-remote-PU"
 		transaction-type="RESOURCE_LOCAL">
-		
+
 		<!-- add entities -->
 		<class>it.fi.mirelli.com.project.examsystem.models.Student</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:12345/ExamDB" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:12345/ExamDB?useSSL=false" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="psw" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
-					
+
 			<property name="show_sql" value="true" />
 			<property name="hibernate.temp.use_jdbc_metadata_defaults"
 				value="false" />
@@ -61,9 +62,9 @@
 			<property name="javax.persistence.schema-generation.scripts.action"
 				value="drop-and-create" />
 			<property name="javax.persistence.schema-generation.scripts.create-target"
-				value="createStudent.sql" />
+				value="../../main/resources/META-INF/createStudent.sql" />
 			<property name="javax.persistence.schema-generation.scripts.drop-target"
-				value="dropStudent.sql" />
+				value="../../main/resources/META-INF/dropStudent.sql" />
 		</properties>
 	</persistence-unit>
 </persistence>

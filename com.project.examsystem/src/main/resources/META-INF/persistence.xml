@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-	                             http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
-	
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+                                 
 	<persistence-unit name="ExamSystem-PU"
 		transaction-type="RESOURCE_LOCAL"> <!-- programmer is responsible for EntityManager creating and tracking -->
 		<!-- MAPPINGS -->
 		<class>it.fi.mirelli.com.project.examsystem.models.Student</class>
 		<!-- Use only classes specified in MAPPINGS -->
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
 		<properties>
-			<!-- Configuring JDBC properties -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:5432/" />
-			<property name="javax.persistence.jdbc.user" value="" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:12345/ExamDB?useSSL=false" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="psw" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 
-			<!-- Log SQL queries -->
-			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="show_sql" value="true" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults"
+				value="false" />
 
-			<!-- Drop and re-create the database schema on startup -->
 			<property name="javax.persistence.schema-generation.database.action"
 				value="drop-and-create" />
-			<!-- none to disable -->
-
-			<!-- Use only classes specified in MAPPINGS -->
-			<property name="hibernate.archive.autodetection" value="none" />
+			<property name="javax.persistence.schema-generation.scripts.action"
+				value="drop-and-create" />
+			<property name="javax.persistence.schema-generation.scripts.create-target"
+				value="createStudent.sql" />
+			<property name="javax.persistence.schema-generation.scripts.drop-target"
+				value="dropStudent.sql" />
 		</properties>
 	</persistence-unit>
 </persistence>

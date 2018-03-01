@@ -1,0 +1,16 @@
+[12:34:32] Logging Provider: org.jboss.logging.Log4jLoggerProvider
+[12:35:14] Logging Provider: org.jboss.logging.Log4jLoggerProvider
+[12:35:17] drop table if exists STUDENT
+[12:35:17] create table STUDENT (id integer not null, email varchar(255), primary key (id)) engine=MyISAM
+[12:35:17] First student is been persisted...
+[12:35:17] insert into STUDENT (email, id) values (?, ?)
+[12:35:17] Second student is been persisted...
+[12:35:17] insert into STUDENT (email, id) values (?, ?)
+[12:35:17] select student0_.id as id1_0_, student0_.email as email2_0_ from STUDENT student0_ where student0_.id=1
+[12:35:17] select student0_.id as id1_0_, student0_.email as email2_0_ from STUDENT student0_ where student0_.id=2
+[12:35:17] select student0_.id as id1_0_, student0_.email as email2_0_ from STUDENT student0_
+[12:35:17] select student0_.id as id1_0_, student0_.email as email2_0_ from STUDENT student0_ where student0_.id=1
+[14:10:10] Logging Provider: org.jboss.logging.Log4jLoggerProvider
+[14:13:33] Logging Provider: org.jboss.logging.Log4jLoggerProvider
+[14:13:36] Stud1 is being added...
+[14:15:14] Stud1 is being added...
