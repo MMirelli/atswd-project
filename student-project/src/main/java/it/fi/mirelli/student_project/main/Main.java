@@ -24,7 +24,7 @@ public class Main {
 		if (args.length > 0)
 			hostName = args[0];
 
-		Thread.sleep(10000); // let db docker set up
+		Thread.sleep(15000); // let db docker set up
 		
 		String dbAccessURL = "jdbc:mysql://" + hostName + ":3306/StudentDB";
 
@@ -46,6 +46,8 @@ public class Main {
 
 		String studentEmailById1 = studentController.getStudentEmailById(1);
 		LOGGER.info("First student email has been fetched: " + studentEmailById1);
+		
+		LOGGER.info("Student-app terminated");
 	}
 
 	private static StudentController setUpStudentController(String hostName) {
