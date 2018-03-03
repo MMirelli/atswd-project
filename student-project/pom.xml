@@ -37,6 +37,20 @@
 
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>${coveralls-v}</version>
+					<configuration>
+						<jacocoReports>
+							<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
+						</jacocoReports>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -113,21 +127,8 @@
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eluder.coveralls</groupId>
-					<artifactId>coveralls-maven-plugin</artifactId>
-					<version>${coveralls-v}</version>
-					<configuration>
-						<jacocoReports>
-							<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
-						</jacocoReports>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 	<profiles>
@@ -162,7 +163,7 @@
 		</profile>
 
 		<profile>
-			<id>auto-docker-start-up</id>
+			<id>IT-auto-docker-start-up</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -247,57 +248,17 @@
 		</profile>
 
 		<profile>
-			<id>docker-compose</id>
+			<id>docker-compose-runner</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
+
 					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
 						<version>${fabric8-v}</version>
-						<configuration>
-							<images>
-								<image>
-									<!-- building of student-app image -->
-									<name>student-app</name>
-									<build>
-										<dockerFileDir>${project.basedir}/Docker</dockerFileDir>
-										<args>
-											<fatjarName>${project.artifactId}-${project.version}-all.jar</fatjarName>
-										</args>
-										<assembly>
-											<inline>
-												<files>
-													<file>
-														<source>${project.build.directory}/${project.artifactId}-${project.version}-all.jar</source>
-													</file>
-												</files>
-											</inline>
-										</assembly>
-									</build>
-								</image>
-
-								<image>
-									<alias>app</alias>
-									<external>
-										<type>compose</type>
-										<basedir>.</basedir>
-									</external>
-									<run>
-										<links>
-											<link>mysql:mysql-host</link>
-										</links>
-										<wait>
-											<time>25000</time>
-											<log>Student-app terminated</log>
-										</wait>
-									</run>
-								</image>
-							</images>
-							<showLogs>true</showLogs>
-						</configuration>
 
 						<executions>
 							<execution>
@@ -306,7 +267,31 @@
 								<goals>
 									<goal>build</goal>
 								</goals>
+								<configuration>
+									<images>
+										<image>
+											<!-- building of student-app image -->
+											<name>student-app</name>
+											<build>
+												<dockerFileDir>${project.basedir}/Docker</dockerFileDir>
+												<args>
+													<fatjarName>${project.artifactId}-${project.version}-all.jar</fatjarName>
+												</args>
+												<assembly>
+													<inline>
+														<files>
+															<file>
+																<source>${project.build.directory}/${project.artifactId}-${project.version}-all.jar</source>
+															</file>
+														</files>
+													</inline>
+												</assembly>
+											</build>
+										</image>
+									</images>
+								</configuration>
 							</execution>
+
 							<execution>
 								<id>docker:start</id>
 								<phase>verify</phase>
@@ -314,6 +299,24 @@
 									<goal>start</goal>
 									<goal>stop</goal>
 								</goals>
+								<configuration>
+									<images>
+										<image>
+											<alias>app</alias>
+											<external>
+												<type>compose</type>
+												<basedir>.</basedir>
+											</external>
+											<run>
+												<wait>
+													<time>20000</time>
+													<log>Student-app terminated</log>
+												</wait>
+											</run>
+										</image>
+									</images>
+									<showLogs>true</showLogs>
+								</configuration>
 							</execution>
 						</executions>
 					</plugin>

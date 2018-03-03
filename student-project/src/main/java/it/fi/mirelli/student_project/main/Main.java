@@ -19,14 +19,15 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException  {
 
+		Thread.sleep(15000); // let db docker set up
+
 		String hostName = "localhost";
 
 		if (args.length > 0)
 			hostName = args[0];
 
-		Thread.sleep(15000); // let db docker set up
 		
-		String dbAccessURL = "jdbc:mysql://" + hostName + ":3306/StudentDB";
+		String dbAccessURL = "jdbc:mysql://" + hostName + ":3306/StudentDB?useSSL=false";
 
 		StudentController studentController = setUpStudentController(dbAccessURL);
 

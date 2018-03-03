@@ -13,3 +13,5 @@ services:
     image: student-app
     links:
       - "db:mysql-host"
+    depends_on:
+      - db
