@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.common;
+package it.fi.mirelli.studentproject.common;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.models.Student;
 
 public class StudentTestHelper {
 

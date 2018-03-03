@@ -1,11 +1,11 @@
-package it.fi.mirelli.student_project.models;
+package it.fi.mirelli.studentproject.models;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.models.Student;
 
 public class StudentTest {
 

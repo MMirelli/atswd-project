@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.it;
+package it.fi.mirelli.studentproject.it;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,10 +12,10 @@ import javax.persistence.NoResultException;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.fi.mirelli.student_project.common.StudentTestHelper;
-import it.fi.mirelli.student_project.controllers.StudentController;
-import it.fi.mirelli.student_project.dbWrappers.SqlStudentsDBWrapper;
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.common.StudentTestHelper;
+import it.fi.mirelli.studentproject.controllers.StudentController;
+import it.fi.mirelli.studentproject.dbWrappers.SqlStudentsDBWrapper;
+import it.fi.mirelli.studentproject.models.Student;
 
 public abstract class AbstractStudentController {
 

@@ -8,7 +8,7 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- add entities -->
-		<class>it.fi.mirelli.student_project.models.Student</class>
+		<class>it.fi.mirelli.studentproject.models.Student</class>
 
 		<properties>
 			<!-- Configuring JDBC properties -->
@@ -44,7 +44,7 @@
 		transaction-type="RESOURCE_LOCAL">
 
 		<!-- add entities -->
-		<class>it.fi.mirelli.student_project.models.Student</class>
+		<class>it.fi.mirelli.studentproject.models.Student</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

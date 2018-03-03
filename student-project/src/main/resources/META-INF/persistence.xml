@@ -8,7 +8,7 @@
 	<persistence-unit name="studentSystem-PU"
 		transaction-type="RESOURCE_LOCAL"> <!-- programmer is responsible for EntityManager creating and tracking -->
 		<!-- MAPPINGS -->
-		<class>it.fi.mirelli.student_project.models.Student</class>
+		<class>it.fi.mirelli.studentproject.models.Student</class>
 		<!-- Use only classes specified in MAPPINGS -->
 
 		<properties>

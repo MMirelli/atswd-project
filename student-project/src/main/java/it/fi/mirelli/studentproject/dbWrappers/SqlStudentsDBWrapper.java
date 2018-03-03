@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.dbWrappers;
+package it.fi.mirelli.studentproject.dbWrappers;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import it.fi.mirelli.student_project.dbs.StudentDatabase;
-import it.fi.mirelli.student_project.models.Student;
-import it.fi.mirelli.student_project.models.Student_;
+import it.fi.mirelli.studentproject.dbs.StudentDatabase;
+import it.fi.mirelli.studentproject.models.Student;
+import it.fi.mirelli.studentproject.models.Student_;
 
 public class SqlStudentsDBWrapper implements StudentDatabase {
 
@@ -31,9 +31,7 @@ public class SqlStudentsDBWrapper implements StudentDatabase {
 
 	@Override
 	public Student findById(Integer id) {
-		Student selectedStudent = selectStudentById(id);
-		return selectedStudent;
-
+		return selectStudentById(id);
 	}
 	
 
@@ -80,9 +78,7 @@ public class SqlStudentsDBWrapper implements StudentDatabase {
 	private Student selectStudentById(int id) {
 		CriteriaQuery<Student> criteria = selectFromStudentWhereEqualId(id);
 		
-		Student selectedStudent = createQuery(criteria).getSingleResult();
-		
-		return selectedStudent;
+		return createQuery(criteria).getSingleResult();
 	}
 
 }

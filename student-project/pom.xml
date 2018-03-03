@@ -83,7 +83,7 @@
 							<!-- Sets the output directory for the code coverage report. -->
 							<outputDirectory>${jacoco.report.path}</outputDirectory>
 							<excludes>
-								<exclude>it/fi/mirelli/student_project/main/*</exclude>
+								<exclude>it/fi/mirelli/studentproject/main/*</exclude>
 								<exclude>**/*Student_.*</exclude>
 							</excludes>
 						</configuration>
@@ -120,7 +120,7 @@
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>it.fi.mirelli.student_project.main.Main</mainClass>
+									<mainClass>it.fi.mirelli.studentproject.main.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

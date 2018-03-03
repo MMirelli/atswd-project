@@ -1,9 +1,9 @@
-package it.fi.mirelli.student_project.it;
+package it.fi.mirelli.studentproject.wrappers;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class StudentControllerIT extends AbstractStudentController {
+public class SqlDatabaseWrapperTest extends AbstractSqlDBWrapperTest {
 
 	@Override
 	protected EntityManagerFactory createEntityManagerFactory() {

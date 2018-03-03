@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.controllers;
+package it.fi.mirelli.studentproject.controllers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -17,10 +17,10 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import it.fi.mirelli.student_project.common.StudentTestHelper;
-import it.fi.mirelli.student_project.controllers.StudentController;
-import it.fi.mirelli.student_project.dbs.StudentDatabase;
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.common.StudentTestHelper;
+import it.fi.mirelli.studentproject.controllers.StudentController;
+import it.fi.mirelli.studentproject.dbs.StudentDatabase;
+import it.fi.mirelli.studentproject.models.Student;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StudentControllerTest {

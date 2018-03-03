@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.models;
+package it.fi.mirelli.studentproject.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

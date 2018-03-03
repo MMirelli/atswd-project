@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.wrappers;
+package it.fi.mirelli.studentproject.wrappers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,9 +15,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.fi.mirelli.student_project.common.StudentTestHelper;
-import it.fi.mirelli.student_project.dbWrappers.SqlStudentsDBWrapper;
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.common.StudentTestHelper;
+import it.fi.mirelli.studentproject.dbWrappers.SqlStudentsDBWrapper;
+import it.fi.mirelli.studentproject.models.Student;
 
 public abstract class AbstractSqlDBWrapperTest {
 
