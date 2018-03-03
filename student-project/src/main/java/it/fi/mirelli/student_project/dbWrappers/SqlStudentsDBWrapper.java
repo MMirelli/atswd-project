@@ -73,7 +73,7 @@ public class SqlStudentsDBWrapper implements StudentDatabase {
 		Root<Student> studentRoot = criteria.from(Student.class);
 		criteria.select(studentRoot);
 
-		criteria.where(builder.equal(studentRoot.get(Student_.id), id));
+		criteria.where(builder.equal(studentRoot.get(Student_.getId()), id));
 		return criteria;
 	}
 
