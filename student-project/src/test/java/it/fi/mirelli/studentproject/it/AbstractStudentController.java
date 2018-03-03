@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import it.fi.mirelli.studentproject.common.StudentTestHelper;
 import it.fi.mirelli.studentproject.controllers.StudentController;
-import it.fi.mirelli.studentproject.dbWrappers.SqlStudentsDBWrapper;
+import it.fi.mirelli.studentproject.dbwrappers.SqlStudentsDBWrapper;
 import it.fi.mirelli.studentproject.models.Student;
 
 public abstract class AbstractStudentController {

@@ -9,8 +9,8 @@ import javax.persistence.Persistence;
 import org.apache.log4j.Logger;
 
 import it.fi.mirelli.studentproject.controllers.StudentController;
-import it.fi.mirelli.studentproject.dbWrappers.SqlStudentsDBWrapper;
 import it.fi.mirelli.studentproject.dbs.StudentDatabase;
+import it.fi.mirelli.studentproject.dbwrappers.SqlStudentsDBWrapper;
 import it.fi.mirelli.studentproject.models.Student;
 
 public class Main {

@@ -1,4 +1,4 @@
-package it.fi.mirelli.studentproject.dbWrappers;
+package it.fi.mirelli.studentproject.dbwrappers;
 
 import java.util.List;
 
