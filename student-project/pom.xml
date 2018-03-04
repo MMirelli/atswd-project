@@ -35,8 +35,7 @@
 		<!-- SonarCloud properties -->
 		<sonar.language>java</sonar.language>
 		<sonar.jacoco.reportPaths>${jacoco.data.file}</sonar.jacoco.reportPaths>
-		<sonar.coverage.exclusions>**/*Student_.*</sonar.coverage.exclusions>
-		<sonar.coverage.exclusions>**/*Main.*</sonar.coverage.exclusions>
+		<sonar.coverage.exclusions>**/*Student_.java,**/*Main.java</sonar.coverage.exclusions>
 
 		<!-- Source and output encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
