@@ -31,24 +31,28 @@ public class Main {
 
 		StudentController studentController = setUpStudentController(dbAccessURL);
 
-		logger.info("Student1 is being added...");
+		logInfo("Student1 is being added...");
 		studentController.addStudent(createStudent(1, "stud1@mail.com"));
-		logger.info("Student2 is being added...");
+		logInfo("Student2 is being added...");
 		studentController.addStudent(createStudent(2, "stud2@mail.com"));
 
 		Student stud1 = studentController.findStudentById(1);
-		logger.info("First student is been fetched: " + stud1);
+		logInfo("First student is been fetched: " + stud1);
 
 		Student stud2 = studentController.findStudentById(2);
-		logger.info("Second student is been fetched: " + stud2);
+		logInfo("Second student is been fetched: " + stud2);
 
 		List<Student> allStudents = studentController.getAllStudents();
-		logger.info("All students are been fetched: " + allStudents);
+		logInfo("All students are been fetched: " + allStudents);
 
 		String studentEmailById1 = studentController.getStudentEmailById(1);
-		logger.info("First student email has been fetched: " + studentEmailById1);
+		logInfo("First student email has been fetched: " + studentEmailById1);
 		
-		logger.info("Student-app terminated");
+		logInfo("Student-app terminated");
+	}
+
+	private static void logInfo(String message) {
+		logger.info(message);
 	}
 
 	private static StudentController setUpStudentController(String hostName) {

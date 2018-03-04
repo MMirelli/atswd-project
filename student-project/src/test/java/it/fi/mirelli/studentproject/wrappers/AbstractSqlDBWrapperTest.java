@@ -8,10 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +18,6 @@ import it.fi.mirelli.studentproject.models.Student;
 public abstract class AbstractSqlDBWrapperTest {
 
 	private EntityManager em;
-//	private Session session;
 
 	private SqlStudentsDBWrapper sqlDbWrapper;
 	private StudentTestHelper helper;
@@ -38,24 +33,8 @@ public abstract class AbstractSqlDBWrapperTest {
 		em = emf.createEntityManager();
 		sqlDbWrapper = new SqlStudentsDBWrapper(em);
 		helper = new StudentTestHelper(em);
-		
-		
-//		Configuration config = new Configuration().configure("remote_hibernate.cfg.xml");
-//		SessionFactory sf = config.buildSessionFactory();
-//		session = sf.openSession();
-//		session.getTransaction().begin();
 	}
 	
-//	@After
-//	public void tearDown() {
-//		if(em.getTransaction().isActive() && !em.getTransaction().getRollbackOnly())
-//			em.getTransaction().commit();
-////		session.flush();
-////		session.close();
-////		
-//		em.close();
-//	}
-
 	@Test
 	public void getAllWhenNoStudents() {
 		helper.assertStudentNumber
@@ -90,7 +69,8 @@ public abstract class AbstractSqlDBWrapperTest {
 
 	@Test
 	public void successfulAddStudent() {
-		sqlDbWrapper.add(helper.createNewStudent(1, "stud1@mail.com"));
+		sqlDbWrapper.add(helper.createNewStudent(1, 
+						"stud1@mail.com"));
 		
 		Student foundStudent = em.find(Student.class, 1);
 		assertNotNull(foundStudent);
@@ -100,7 +80,8 @@ public abstract class AbstractSqlDBWrapperTest {
 	public void unsuccessfulAddStudent() {
 		helper.persistNewStudent(1, "stud@mail.com");
 	
-		sqlDbWrapper.add(helper.createNewStudent(1, "stud1@mail.com"));	
+		sqlDbWrapper.add(helper.
+				createNewStudent(1, "stud1@mail.com"));	
 		
 	}
 
@@ -108,7 +89,8 @@ public abstract class AbstractSqlDBWrapperTest {
 	public void successfulGetEmailById() {
 		helper.persistNewStudent(1, "stud@mail.com");
 	
-		String actualEmail = sqlDbWrapper.getEmailById(1);
+		String actualEmail = 
+				sqlDbWrapper.getEmailById(1);
 		assertEquals("stud@mail.com", actualEmail);
 	}
 

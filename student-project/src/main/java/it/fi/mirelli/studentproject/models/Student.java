@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity(name = "STUDENT") // track entity name inside java application
-// @Table(name = "STUDENT") // track db table name, its default value is
-// Entity.name
 public class Student {
 
 	public Student() {

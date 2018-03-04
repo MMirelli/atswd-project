@@ -358,8 +358,8 @@
 											<run>
 												<wait>
 												<!-- Here we test that student-app terminates 
-															as expected -->
-													<time>20000</time>
+															as expected by 25 seconds-->
+													<time>25000</time>
 													<log>Student-app terminated</log>
 												</wait>
 											</run>

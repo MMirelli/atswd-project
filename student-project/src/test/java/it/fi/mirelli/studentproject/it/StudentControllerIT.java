@@ -7,9 +7,11 @@ public class StudentControllerIT extends AbstractStudentController {
 
 	@Override
 	protected EntityManagerFactory createEntityManagerFactory() {
-		EntityManagerFactory emf = Persistence.
-				createEntityManagerFactory("studentSystem-inMemory-PU");
-		return emf;
+		
+		return Persistence.
+				createEntityManagerFactory
+					("studentSystem-inMemory-PU");
+		
 	}
 	
 }

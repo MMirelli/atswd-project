@@ -11,6 +11,7 @@ public class SqlDatabaseWrapperIT extends AbstractSqlDBWrapperTest{
 	@Override
 	protected EntityManagerFactory createEntityManagerFactory() {
 		return Persistence.
-				createEntityManagerFactory("studentSystem-remote-PU");
+				createEntityManagerFactory
+					("studentSystem-remote-PU");
 	}	
 }
