@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.it;
+package it.fi.mirelli.studentproject.it;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

@@ -1,6 +1,6 @@
-package it.fi.mirelli.student_project.dbs;
+package it.fi.mirelli.studentproject.dbs;
 
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.models.Student;
 
 public interface StudentDatabase extends Database<Student, Integer> {
 	

@@ -1,12 +1,10 @@
-package it.fi.mirelli.student_project.models;
+package it.fi.mirelli.studentproject.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity(name = "STUDENT") // track entity name inside java application
-// @Table(name = "STUDENT") // track db table name, its default value is
-// Entity.name
 public class Student {
 
 	public Student() {

@@ -10,12 +10,12 @@
 		</layout>
 	</appender>
 	
-	<!-- Just to avoid hibernate logs -->
+	<!-- Just to avoid extra default logs of hibernate -->
 	<logger name="org.hibernate">
 		<level value="OFF" />
 	</logger>
 
-	<!-- Just to avoid hibernate logs -->
+	<!-- Just to avoid extra default logs of hibernate -->
 	<logger name="org.hibernate.SQL">
 		<level value="OFF" />
 	</logger>

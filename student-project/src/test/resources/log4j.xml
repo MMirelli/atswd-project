@@ -18,13 +18,28 @@
 		</layout>
 	</appender>
 
-	<!-- log SQL queries executed by Hibernate library -->
-	<logger name="org.hibernate.SQL">
-		<level value="DEBUG" />
+	<!-- Just to avoid extra default logs of hibernate -->
+	<logger name="org.hibernate">
+		<level value="OFF" />
+	</logger>
+	
+	<!-- Log all SQL DDL statements as they are executed -->
+	<logger name="org.hibernate.tool.hbm2ddl"> 
+		<level value="INFO" />
+	</logger>
+	
+	<!-- Log transaction related activity -->
+	<logger name="org.hibernate.transaction"> 
+		<level value="INFO" />
+	</logger>
+
+	<!-- Log all JDBC parameters -->
+	<logger name="org.hibernate.type"> 
+		<level value="INFO" />
 	</logger>
 
 	<root>
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="file" />
 		<appender-ref ref="console" />
 	</root>

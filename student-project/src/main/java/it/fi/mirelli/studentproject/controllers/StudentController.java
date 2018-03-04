@@ -1,9 +1,9 @@
-package it.fi.mirelli.student_project.controllers;
+package it.fi.mirelli.studentproject.controllers;
 
 import java.util.List;
 
-import it.fi.mirelli.student_project.dbs.StudentDatabase;
-import it.fi.mirelli.student_project.models.Student;
+import it.fi.mirelli.studentproject.dbs.StudentDatabase;
+import it.fi.mirelli.studentproject.models.Student;
 
 public class StudentController {
 	

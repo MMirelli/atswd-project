@@ -1,4 +1,4 @@
-package it.fi.mirelli.student_project.dbs;
+package it.fi.mirelli.studentproject.dbs;
 
 import java.util.List;
 

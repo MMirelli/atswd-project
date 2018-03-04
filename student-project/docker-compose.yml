@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  db:
+    image: mysql
+    ports: 
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: StudentDB
+      MYSQL_USER: root 
+      MYSQL_ROOT_PASSWORD: psw
+  app:
+    image: student-app
+    links:
+      - "db:mysql-host"
+    depends_on:
+      - db
