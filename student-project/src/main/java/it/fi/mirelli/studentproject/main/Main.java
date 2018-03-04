@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 
 import it.fi.mirelli.studentproject.controllers.StudentController;
 import it.fi.mirelli.studentproject.dbs.StudentDatabase;
-import it.fi.mirelli.studentproject.dbwrappers.SqlStudentsDBWrapper;
 import it.fi.mirelli.studentproject.models.Student;
+import it.fi.mirelli.studentproject.wrappers.SqlStudentsDBWrapper;
 
 public class Main {
 
@@ -61,7 +61,7 @@ public class Main {
 		urlProperty.put("javax.persistence.jdbc.url", hostName);
 
 		EntityManagerFactory emf;
-		emf = Persistence.createEntityManagerFactory("studentSystem-PU", urlProperty);
+		emf = Persistence.createEntityManagerFactory("studentSystem-Main-PU", urlProperty);
 
 		StudentDatabase db = new SqlStudentsDBWrapper(emf.createEntityManager());
 		return new StudentController(db);

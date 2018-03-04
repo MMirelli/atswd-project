@@ -18,7 +18,7 @@
 		</layout>
 	</appender>
 
-	<!-- Just to avoid all hibernate logs -->
+	<!-- Just to avoid extra default logs of hibernate -->
 	<logger name="org.hibernate">
 		<level value="OFF" />
 	</logger>
