@@ -36,6 +36,7 @@
 		<sonar.language>java</sonar.language>
 		<sonar.jacoco.reportPaths>${jacoco.data.file}</sonar.jacoco.reportPaths>
 		<sonar.coverage.exclusions>**/*Student_.java,**/*Main.java</sonar.coverage.exclusions>
+		<sonar.projectName>student-project</sonar.projectName>
 
 		<!-- Source and output encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
