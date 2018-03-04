@@ -11,7 +11,8 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<!-- versions -->
+	
+	<!-- Versions of plug-ins and dependencies  -->
 		<jacoco-v>0.7.7.201606060606</jacoco-v>
 		<surefire-v>2.19.1</surefire-v>
 		<compiler-plugin-v>3.7.0</compiler-plugin-v>
@@ -27,23 +28,27 @@
 		<fabric8-v>0.24.0</fabric8-v>
 		<antrun-v>1.8</antrun-v>
 		<shade-v>3.1.0</shade-v>
-
+	
 		<jacoco.data.file>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.data.file>
 		<jacoco.report.path>${project.reporting.outputDirectory}/jacoco-ut</jacoco.report.path>
 
+	<!-- SonarCloud properties -->
 		<sonar.language>java</sonar.language>
 		<sonar.jacoco.reportPaths>${jacoco.data.file}</sonar.jacoco.reportPaths>
 		<sonar.coverage.exclusions>**/*Student_.*</sonar.coverage.exclusions>
 		<sonar.coverage.exclusions>**/*Main.*</sonar.coverage.exclusions>
 		
+	<!-- Source and output encoding -->	
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 
 	<build>
+
 		<pluginManagement>
 			<plugins>
+
 				<plugin>
 					<groupId>org.eluder.coveralls</groupId>
 					<artifactId>coveralls-maven-plugin</artifactId>
@@ -54,16 +59,19 @@
 						</jacocoReports>
 					</configuration>
 				</plugin>
+
 			</plugins>
 		</pluginManagement>
+		
 		<plugins>
+
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco-v}</version>
 				<executions>
 					<!-- Prepares the property pointing to the JaCoCo runtime agent which 
-						is passed as VM argument when Maven the Surefire plugin is executed. -->
+						is passed as VM argument when Maven the SureFire plug-in is executed. -->
 					<execution>
 						<id>pre-unit-test</id>
 						<goals>
@@ -95,11 +103,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+		<!-- Unit test plug-in -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire-v}</version>
 			</plugin>
+
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${compiler-plugin-v}</version>
@@ -108,7 +119,8 @@
 					<target>${java-v}</target>
 				</configuration>
 			</plugin>
-
+			
+		<!-- FatJar plug-in: all dependencies are included in the jar -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -137,13 +149,18 @@
 	</build>
 
 	<profiles>
+	
+	<!-- Useful profile for quick testing the application, as no dockerized DBs are used.
+									This is default. -->
 		<profile>
 			<id>no-integration-docker-dependent</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
+			
 				<plugins>
+			
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
@@ -163,26 +180,34 @@
 							</execution>
 						</executions>
 					</plugin>
+			
 				</plugins>
+			
 			</build>
 		</profile>
 
+	<!-- Running this profile all tests (Unit and IT) are executed. Dockerized DB
+							start up and tear down automatically -->
 		<profile>
 			<id>IT-auto-docker-start-up</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
+			
 				<plugins>
+
+				<!-- MySQL docker DB needs quite a long time to start up; this plugin is activated to stop 
+												the build temporarily (15 seconds) -->
 					<plugin>
-						<!-- mySql db needs quite a long time to start up, this is to stop 
-							the build temporarily -->
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<version>${antrun-v}</version>
 						<executions>
 							<execution>
 								<id>sleep-for-a-while</id>
+							<!-- integration-test phase has been chosen because docker DB is set up in 
+												pre-integration-test phase -->	
 								<phase>integration-test</phase>
 								<configuration>
 									<target>
@@ -195,6 +220,8 @@
 							</execution>
 						</executions>
 					</plugin>
+					
+				<!-- FailSafe is here set in the way that all IT will be executed  -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
@@ -208,6 +235,8 @@
 							</execution>
 						</executions>
 					</plugin>
+					
+				<!-- Start up and tear down MySQL DB docker  -->	
 					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
@@ -224,6 +253,9 @@
 										</env>
 										<hostname>localhost</hostname>
 										<ports>
+										<!-- Default MySQL DB port (3306) is mapped to 12345 host
+										 machine port since Travis-IC have 3306 port consistently 
+										 						busy   -->
 											<port>12345:3306</port>
 										</ports>
 									</run>
@@ -248,16 +280,23 @@
 							</execution>
 						</executions>
 					</plugin>
+					
 				</plugins>
+				
 			</build>
+			
 		</profile>
 
+	<!-- This profile runs the docker-compose file. Student-project main (so-called student-app) 
+	would then be executed by openjdk8 of Ubuntu16.04 dockerized OS and communicate with in-docker
+										 MySQL DB.  -->
 		<profile>
 			<id>docker-compose-runner</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
+
 				<plugins>
 
 					<plugin>
@@ -266,6 +305,9 @@
 						<version>${fabric8-v}</version>
 
 						<executions>
+						
+						<!-- This execution builds student-app docker image, as it is defined in
+											 dockerFileDir/Dockerfile -->
 							<execution>
 								<id>docker:build</id>
 								<phase>package</phase>
@@ -275,7 +317,6 @@
 								<configuration>
 									<images>
 										<image>
-											<!-- building of student-app image -->
 											<name>student-app</name>
 											<build>
 												<dockerFileDir>${project.basedir}/Docker</dockerFileDir>
@@ -297,6 +338,8 @@
 								</configuration>
 							</execution>
 
+						<!-- It runs docker-compose, so both student-app image and in-docker
+								MySQL DB are executed and teared down, once finished. -->
 							<execution>
 								<id>docker:start</id>
 								<phase>verify</phase>
@@ -314,6 +357,8 @@
 											</external>
 											<run>
 												<wait>
+												<!-- Here we test that student-app terminates 
+															as expected -->
 													<time>20000</time>
 													<log>Student-app terminated</log>
 												</wait>
@@ -327,19 +372,21 @@
 					</plugin>
 					
 				</plugins>
+				
 			</build>
 		</profile>
 	</profiles>
 
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit-v}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+	
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -347,31 +394,11 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/ch.vorburger.mariaDB4j/mariaDB4j -->
-		<!-- <dependency> <groupId>ch.vorburger.mariaDB4j</groupId> <artifactId>mariaDB4j</artifactId> 
-			<version>2.2.3</version> <scope>test</scope> </dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate-v}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-v}</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j-v}</version>
-		</dependency>
-
 
 		<!-- In-memory db for unit-testing -->
 		<dependency>
@@ -379,6 +406,19 @@
 			<artifactId>h2</artifactId>
 			<version>${h2-database-v}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- MySQL DB connector, used for IT -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-v}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j-v}</version>
 		</dependency>
 
 	</dependencies>
