@@ -37,16 +37,16 @@ public class Main {
 		studentController.addStudent(createStudent(2, "stud2@mail.com"));
 
 		Student stud1 = studentController.findStudentById(1);
-		logInfo("First student is been fetched: " + stud1);
+		logInfo("First student is being fetched: " + stud1);
 
 		Student stud2 = studentController.findStudentById(2);
-		logInfo("Second student is been fetched: " + stud2);
+		logInfo("Second student is being fetched: " + stud2);
 
 		List<Student> allStudents = studentController.getAllStudents();
-		logInfo("All students are been fetched: " + allStudents);
+		logInfo("All students are being fetched: " + allStudents);
 
 		String studentEmailById1 = studentController.getStudentEmailById(1);
-		logInfo("First student email has been fetched: " + studentEmailById1);
+		logInfo("First student email is being fetched: " + studentEmailById1);
 		
 		logInfo("Student-app terminated");
 	}
