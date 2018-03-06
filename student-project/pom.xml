@@ -287,7 +287,7 @@
 		</profile>
 
 		<!-- This profile runs the docker-compose file. Student-project main (so-called 
-			student-app) would then be executed by openjdk8 of Ubuntu16.04 dockerized 
+			student-app) will then be executed by openjdk8 of Ubuntu16.04 dockerized 
 			OS and communicate with in-docker MySQL DB. -->
 		<profile>
 			<id>docker-compose-runner</id>
