@@ -9,23 +9,23 @@ This project is thought to be a small and simplified demonstration of the power 
 
 ###	Requirements
 
-Here is what you need to successfully build the project, we assume your OS is a Linux Derivate:
+Here is what you need to successfully build the project, we assume your OS is a Linux Derivative:
 
-- The latest version of [docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu/);
+- The latest [docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu/) version;
 
 - The latest maven version:
 
 	```
 	$ sudo apt-get install maven
-	``` 
+	```;
 	
 - The latest git version git:
 
 	```	
 	$ sudo apt-get install git
-	```
+	```;
 
-- JDK 8 (we remember to set JAVA_HOME so as to it references your JDK installation folder) ; 
+- JDK 8 (we remember to set JAVA_HOME so as to it references your JDK installation folder) . 
 
 
 ### Step by step instructions
@@ -35,23 +35,23 @@ Here is what you need to successfully build the project, we assume your OS is a 
 
 	```	
 	$ sudo systemctl start docker
-	``` 
+	```; 
 
 
 2. Clone our repository:
 	
 	```	
 	$ git clone https://github.com/MMirelli/atswd-project.git
-	``` 
+	```; 
 	
 3. Move to the folder `atwsd-project/student-project` and just run (you may need su permissions due to docker daemon):
 
 	```	
 	$ cd atwsd-project/student-project && sudo ./run.sh
-	``` 
-## What does `run.sh` do?
+	```. 
+## What does `run.sh` should do?
 
-The script simply starts a maven build: it executes the maven `clean` lifecycle and `default` until the `verify` phase, using the `docker-compose-runner` maven profile. This builds the jar of the application, with all its dependencies, and starts the `docker-compose.yml`. In conclusion this file will execute the `student-project/Docker/Dockerfile` generating and linking the `student-app` image to the MySQL docker image, running on different docker container.
+The script simply starts a maven build: it executes the maven `clean` lifecycle and `default` one until the `verify` phase, using the `docker-compose-runner` maven profile. This builds the jar of the application, with all its dependencies, and starts the `docker-compose.yml`. For another thing the compose file will execute the `student-project/Docker/Dockerfile`, generating the `student-app` image. In conclusion the app docker container will be linked to a different docker container, running a MySQL docker image.
 At the end of the build this is the expected behaviour:	
 
 ![](pics/compose-success.png)
