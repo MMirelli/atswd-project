@@ -39,10 +39,10 @@ Here is what you need to successfully run the project, we assume your OS is a Li
 	$ git clone https://github.com/MMirelli/atswd-project.git
 	``` 
 	
-6. Move to the folder `atwsd-project/student-app` and just run (you may need su permissions due to docker daemon activation and running):
+6. Move to the folder `atwsd-project/student-project` and just run (you may need su permissions due to docker daemon activation and running):
 
 	```	
-	$ cd atwsd-project/student-app && sudo ./run.sh
+	$ cd atwsd-project/student-project && sudo ./run.sh
 	``` 
 	
 	
