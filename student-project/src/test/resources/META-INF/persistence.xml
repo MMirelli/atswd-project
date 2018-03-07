@@ -29,14 +29,6 @@
 			<property name="javax.persistence.schema-generation.database.action"
 				value="drop-and-create" />
 			
-
-			<!-- Configuring path to generating and dropping table scripts which are located
-							 in folder main/resources/META-INF/ -->
-			<property name="javax.persistence.schema-generation.scripts.create-target"
-				value="src/main/resources/META-INF/createStudent.sql" />
-			<property name="javax.persistence.schema-generation.scripts.drop-target"
-				value="src/main/resources/META-INF/dropStudent.sql" />
-			
 			<!-- Avoiding formatting the generated SQL statement to make it more readable, 
 								but taking up more screen space. -->
 			<property name="hibernate.format_sql" value="false" />
@@ -77,14 +69,6 @@
 			<!-- Configuring generation and drop actions -->
 			<property name="javax.persistence.schema-generation.database.action"
 				value="drop-and-create" />
-			
-					
-			<!-- Configuring path to generating and dropping table scripts which are located
-							 in folder main/resources/META-INF/ -->
-			<property name="javax.persistence.schema-generation.scripts.create-target"
-				value="src/main/resources/META-INF/createStudent.sql" />
-			<property name="javax.persistence.schema-generation.scripts.drop-target"
-				value="src/main/resources/META-INF/dropStudent.sql" />
 			
 			<!-- Avoiding formatting the generated SQL statement to make it more readable, 
 								but taking up more screen space. -->

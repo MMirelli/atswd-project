@@ -6,6 +6,7 @@ branches:
   only:
   - master
   - testbuild
+  - IT-bug-defect
 services:
   - docker
 before_install:
