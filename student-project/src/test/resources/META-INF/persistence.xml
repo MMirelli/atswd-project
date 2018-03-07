@@ -29,10 +29,6 @@
 			<property name="javax.persistence.schema-generation.database.action"
 				value="drop-and-create" />
 			
-
-			<!-- Configuring path to generating and dropping table scripts which are located
-							 in folder main/resources/META-INF/ -->
-			
 			<!-- Avoiding formatting the generated SQL statement to make it more readable, 
 								but taking up more screen space. -->
 			<property name="hibernate.format_sql" value="false" />
@@ -73,7 +69,7 @@
 			<!-- Configuring generation and drop actions -->
 			<property name="javax.persistence.schema-generation.database.action"
 				value="drop-and-create" />
-						
+				
 			<!-- Avoiding formatting the generated SQL statement to make it more readable, 
 								but taking up more screen space. -->
 			<property name="hibernate.format_sql" value="false" />
