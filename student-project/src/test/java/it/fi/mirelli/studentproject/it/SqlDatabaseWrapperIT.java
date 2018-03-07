@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 
 import it.fi.mirelli.studentproject.wrappers.AbstractStudentDBWrapperTest;
 
-public class StudentDatabaseWrapperIT extends AbstractStudentDBWrapperTest{
+public class SqlDatabaseWrapperIT extends AbstractStudentDBWrapperTest{
 
 
 	@Override
