@@ -16,8 +16,6 @@ public class Student {
 
 	@Column
 	private String email;
-	
-//	getters and setters
 
 	public void setId(int id) {
 		this.id = id;

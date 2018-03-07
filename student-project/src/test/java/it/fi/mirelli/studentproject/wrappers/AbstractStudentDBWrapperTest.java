@@ -12,14 +12,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.fi.mirelli.studentproject.common.StudentTestHelper;
+import it.fi.mirelli.studentproject.dbs.StudentDatabase;
 import it.fi.mirelli.studentproject.models.Student;
 import it.fi.mirelli.studentproject.wrappers.SqlStudentsDBWrapper;
 
-public abstract class AbstractSqlDBWrapperTest {
+public abstract class AbstractStudentDBWrapperTest {
 
 	private EntityManager em;
 
-	private SqlStudentsDBWrapper sqlDbWrapper;
+	private StudentDatabase sqlDbWrapper;
 	private StudentTestHelper helper;
 	private EntityManagerFactory emf;
 

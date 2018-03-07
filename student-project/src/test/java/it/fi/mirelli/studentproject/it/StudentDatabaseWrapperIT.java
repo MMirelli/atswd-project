@@ -3,9 +3,9 @@ package it.fi.mirelli.studentproject.it;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import it.fi.mirelli.studentproject.wrappers.AbstractSqlDBWrapperTest;
+import it.fi.mirelli.studentproject.wrappers.AbstractStudentDBWrapperTest;
 
-public class SqlDatabaseWrapperIT extends AbstractSqlDBWrapperTest{
+public class StudentDatabaseWrapperIT extends AbstractStudentDBWrapperTest{
 
 
 	@Override
