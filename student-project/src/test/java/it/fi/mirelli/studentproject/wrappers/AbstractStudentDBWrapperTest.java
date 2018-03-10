@@ -99,8 +99,7 @@ public abstract class AbstractStudentDBWrapperTest {
 	public void unsuccessfulGetEmailById() {
 		helper.persistNewStudent(1, "stud@mail.com");
 	
-		String actualEmail = sqlDbWrapper.getEmailById(2);
-		assertEquals("stud@mail.com", actualEmail);
+		sqlDbWrapper.getEmailById(2);
 	}
 
 }

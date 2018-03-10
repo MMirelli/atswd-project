@@ -27,14 +27,19 @@ public class Main {
 			hostName = args[0];
 
 		
-		String dbAccessURL = "jdbc:mysql://" + hostName + ":3306/StudentDB?useSSL=false";
+		String dbAccessURL = "jdbc:mysql://" + 
+				hostName + ":3306/StudentDB?useSSL=false";
 
-		StudentController studentController = setUpStudentController(dbAccessURL);
+		StudentController studentController = 
+				setUpStudentController(dbAccessURL);
 
 		logInfo("Student1 is being added...");
-		studentController.addStudent(createStudent(1, "stud1@mail.com"));
+		studentController.addStudent(
+				createStudent(1, "stud1@mail.com"));
+		
 		logInfo("Student2 is being added...");
-		studentController.addStudent(createStudent(2, "stud2@mail.com"));
+		studentController.addStudent(
+				createStudent(2, "stud2@mail.com"));
 
 		Student stud1 = studentController.findStudentById(1);
 		logInfo("First student is being fetched: " + stud1);

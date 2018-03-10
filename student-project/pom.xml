@@ -120,31 +120,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- FatJar plug-in: all dependencies are included in the jar -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>${shade-v}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<shadedArtifactAttached>true</shadedArtifactAttached>
-							<shadedClassifierName>all</shadedClassifierName>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>it.fi.mirelli.studentproject.main.Main</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
 	</build>
 
@@ -254,7 +229,7 @@
 										<hostname>localhost</hostname>
 										<ports>
 											<!-- Default MySQL DB port (3306) is mapped to 12345 host machine 
-												port since Travis-IC have 3306 port consistently busy -->
+												port since Travis-IC has 3306 port consistently busy -->
 											<port>12345:3306</port>
 										</ports>
 									</run>
@@ -297,6 +272,31 @@
 			<build>
 
 				<plugins>
+
+					<!-- FatJar plug-in: all dependencies are included in the jar -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<version>${shade-v}</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+								<configuration>
+									<shadedArtifactAttached>true</shadedArtifactAttached>
+									<shadedClassifierName>all</shadedClassifierName>
+									<transformers>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+											<mainClass>it.fi.mirelli.studentproject.main.Main</mainClass>
+										</transformer>
+									</transformers>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 
 					<plugin>
 						<groupId>io.fabric8</groupId>
