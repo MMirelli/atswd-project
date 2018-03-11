@@ -6,7 +6,6 @@ branches:
   only:
   - master
   - testbuild
-  - jacoco-profile-feature
 services:
   - docker
 before_install:
@@ -16,7 +15,6 @@ addons:
     branches:
       - master
       - testbuild
-      - jacoco-profile-feature
     organization: mmirelli-github
     token:
       secure: "AsRdMYfBnqsQjNF6ESCrWnlqY9HUAMuWCTdbg848l0TFNzXC9Hqo92g+cp+Qs7RLlQ8BMARykAIE+iln7MSqshhs9txLBmrtWWXpSkDr/SgvkQ1pigKstPTJBL+eRcsc2VZAXpqDMJe5T8h9926Agl0Xp/hyTxIzaDoMilfHrvgSEj7R1GnLPKtvG9mR83jcAlb2ZAg6m3AVvCdR59iqNHSzh+yxnDvzgW/sidkPk3I9uPYxSojpv1aV3sWP0hbrtW8b/lX2OxsayNOjbB5+Tx4p5t8IEpYXkyKOM/D1t4/uUywN82jDChKWWcaN0CcBRIsRdo5ftnOlrAa4AI4cbQdj1XW9aOrmb6lcss1APBMAfhGd3MFrdRRyu+VxzHsr88pkSUJysITQFfdb9QeoRBGgA82n3Gb0THUD5h8UTYCz7dWaOrjrcYaEulypno4R6TcaFnxokxFgcKQsVX6Q8USIiPkq+xIRDguGPoIeYUlineL1FsJGbN2Zpo9iUNJapzNF0yuqDmqAUCgA3RsKhWowbu21jivCyNLBH0oE3JTve1ZfEcCwZCnBs8Wqu4+VH4qj/hF/Sf/nz7PkIWUfPXbZmnmhjKVDOYPYTZS2TO9HuHTQQ7L5rsWuwNdG3sLfli/2gYMtBhrP14P17KFNSR7QEzXLPopuFKPUW8SFQFk="
