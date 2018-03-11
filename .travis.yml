@@ -6,6 +6,7 @@ branches:
   only:
   - master
   - testbuild
+  - jacoco-profile-feature
 services:
   - docker
 before_install:
