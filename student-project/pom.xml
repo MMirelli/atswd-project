@@ -46,63 +46,7 @@
 
 	<build>
 
-		<pluginManagement>
-			<plugins>
-
-				<plugin>
-					<groupId>org.eluder.coveralls</groupId>
-					<artifactId>coveralls-maven-plugin</artifactId>
-					<version>${coveralls-v}</version>
-					<configuration>
-						<jacocoReports>
-							<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
-						</jacocoReports>
-					</configuration>
-				</plugin>
-
-			</plugins>
-		</pluginManagement>
-
 		<plugins>
-
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco-v}</version>
-				<executions>
-					<!-- Prepares the property pointing to the JaCoCo runtime agent which 
-						is passed as VM argument when Maven the SureFire plug-in is executed. -->
-					<execution>
-						<id>pre-unit-test</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<!-- Sets the path to the file which contains the execution data. -->
-							<destFile>${jacoco.data.file}</destFile>
-						</configuration>
-					</execution>
-					<!-- Ensures that the code coverage report for unit tests is created 
-						after unit tests have been run. -->
-					<execution>
-						<id>post-unit-test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<configuration>
-							<!-- Sets the path to the file which contains the execution data. -->
-							<dataFile>${jacoco.data.file}</dataFile>
-							<!-- Sets the output directory for the code coverage report. -->
-							<outputDirectory>${jacoco.report.path}</outputDirectory>
-							<excludes>
-								<exclude>it/fi/mirelli/studentproject/main/*</exclude>
-								<exclude>**/*Student_.*</exclude>
-							</excludes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 
 			<!-- Unit test plug-in -->
 			<plugin>
@@ -124,6 +68,77 @@
 	</build>
 
 	<profiles>
+
+		<profile>
+			<id>code-analysis</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+
+				<pluginManagement>
+					<plugins>
+
+						<plugin>
+							<groupId>org.eluder.coveralls</groupId>
+							<artifactId>coveralls-maven-plugin</artifactId>
+							<version>${coveralls-v}</version>
+							<configuration>
+								<jacocoReports>
+									<jacocoReport>${jacoco.report.path}/jacoco.xml</jacocoReport>
+								</jacocoReports>
+							</configuration>
+						</plugin>
+
+					</plugins>
+				</pluginManagement>
+				
+				<plugins>
+				
+					<plugin>
+				
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco-v}</version>
+						<executions>
+							<!-- Prepares the property pointing to the JaCoCo runtime agent which 
+								is passed as VM argument when Maven the SureFire plug-in is executed. -->
+							<execution>
+								<id>pre-unit-test</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Sets the path to the file which contains the execution data. -->
+									<destFile>${jacoco.data.file}</destFile>
+								</configuration>
+							</execution>
+							<!-- Ensures that the code coverage report for unit tests is created 
+								after unit tests have been run. -->
+							<execution>
+								<id>post-unit-test</id>
+								<phase>test</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+								<configuration>
+									<!-- Sets the path to the file which contains the execution data. -->
+									<dataFile>${jacoco.data.file}</dataFile>
+									<!-- Sets the output directory for the code coverage report. -->
+									<outputDirectory>${jacoco.report.path}</outputDirectory>
+									<excludes>
+										<exclude>it/fi/mirelli/studentproject/main/*</exclude>
+										<exclude>**/*Student_.*</exclude>
+									</excludes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				
+				</plugins>
+				
+			</build>
+		</profile>
 
 		<!-- Useful profile for quick testing the application, as no dockerized 
 			DBs are used. This is default. -->
