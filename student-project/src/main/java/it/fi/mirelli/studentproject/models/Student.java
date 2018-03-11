@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "STUDENT") // track entity name inside java application
+@Entity(name = "STUDENT") 
 public class Student {
 
 	public Student() {

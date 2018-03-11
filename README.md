@@ -25,7 +25,7 @@ Here is what you need to successfully build the project, we assume your OS is a 
 	$ sudo apt-get install git
 	```
 
-- JDK 8 (we remember to set JAVA_HOME so as to it references your JDK installation folder) . 
+- JDK 8 (we remind you to set JAVA_HOME so as to it references your JDK installation folder) . 
 
 
 ### Step by step instructions

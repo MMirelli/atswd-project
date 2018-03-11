@@ -56,27 +56,34 @@ public class SqlStudentsDBWrapper implements StudentDatabase {
 	}
 
 	private CriteriaQuery<Student> selectAllFromStudent() {
+		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 
-		CriteriaQuery<Student> criteria = builder.createQuery(Student.class);
-		Root<Student> studentRoot = criteria.from(Student.class);
+		CriteriaQuery<Student> criteria = builder.
+				createQuery(Student.class);
+		
+		Root<Student> studentRoot = criteria.
+				from(Student.class);
+		
 		criteria.select(studentRoot);
 		return criteria;
 	}
 
-	private CriteriaQuery<Student> selectFromStudentWhereEqualId(Integer id) {
+	private Student selectStudentById(Integer id) {
+		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 
-		CriteriaQuery<Student> criteria = builder.createQuery(Student.class);
-		Root<Student> studentRoot = criteria.from(Student.class);
+		CriteriaQuery<Student> criteria = builder.
+				createQuery(Student.class);
+		
+		Root<Student> studentRoot = criteria.
+				from(Student.class);
+		
 		criteria.select(studentRoot);
 
-		criteria.where(builder.equal(studentRoot.get(Student_.getId()), id));
-		return criteria;
-	}
-
-	private Student selectStudentById(int id) {
-		CriteriaQuery<Student> criteria = selectFromStudentWhereEqualId(id);
+		criteria.where(builder.
+				equal(studentRoot.get(Student_.getId()), id));
+		
 		
 		return createQuery(criteria).getSingleResult();
 	}
