@@ -5,6 +5,10 @@
 
 This project is thought to be a small and simplified demonstration of the power of JPA and Hibernate technologies.   It offers an easy  interface to communicate with SQL  DBs, implementing the MVC pattern. The final jar file, produced by the following building instructions, gives evidence of the application correct behaviour in persisting and fetching data to and from a MySQL database image, running on a Docker container, as an end-to-end integration test. 
 
+The main development technique explored in this project is **Test Driven Development** (*TDD*), which was continuously monitored with the support of useful tools such as Travis CI, Coveralls, SonarCloud. These, together with other technologies employed during the development, guarantee a high-quality and fully-tested deliverable.   
+
+The project was conducted as an individual project for the [Advanced Programming Techniques](https://www.unifi.it/p-ins2-2017-480807-0.html) master's level course, held by professor L. Bettini in 2017-18 at [Università degli Studi di Firenze](https://www.unifi.it), Florence, Italy. 
+
 ##  Building
 
 ###	Requirements
