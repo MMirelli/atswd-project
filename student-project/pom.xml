@@ -21,7 +21,7 @@
 		<coveralls-v>4.3.0</coveralls-v>
 		<junit-v>4.12</junit-v>
 		<mockito-v>1.10.19</mockito-v>
-		<h2-database-v>1.4.196</h2-database-v>
+		<h2-database-v>2.0.206</h2-database-v>
 		<log4j-v>1.2.17</log4j-v>
 		<hibernate-v>5.2.13.Final</hibernate-v>
 		<mysql-v>6.0.6</mysql-v>
