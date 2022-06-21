@@ -24,7 +24,7 @@
 		<h2-database-v>1.4.196</h2-database-v>
 		<log4j-v>1.2.17</log4j-v>
 		<hibernate-v>5.2.13.Final</hibernate-v>
-		<mysql-v>6.0.6</mysql-v>
+		<mysql-v>8.0.28</mysql-v>
 		<fabric8-v>0.24.0</fabric8-v>
 		<antrun-v>1.8</antrun-v>
 		<shade-v>3.1.0</shade-v>
